@@ -12,15 +12,15 @@ CREATE TABLE IF NOT EXISTS produtos_pedidos(
 	id BIGSERIAL PRIMARY KEY,
 	pedido_id integer NOT NULL,
 	produto_id integer NOT NULL,
-	FOREIGN KEY (pedido_id) REFERENCES pedidos(id),
-	FOREIGN KEY (produto_id) REFERENCES produtos(id)
+	FOREIGN KEY (pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE,
+	FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS pedidos(
 	id BIGSERIAL PRIMARY KEY,
 	status varchar(50) NOT NULL,
 	cliente_id INTEGER NOT NULL,
-	FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+	FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS clientes( 
@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS endereços(
 	bairro varchar(50) NOT NULL,
 	complemento varchar(100),
 	cliente_id integer UNIQUE NOT NULL,
-	FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+	FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
 );
 

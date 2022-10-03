@@ -31,6 +31,9 @@ VALUES
 
 -- 1)
 SELECT 
+	clientes.id,
+	clientes.nome,
+	clientes.lealdade,
 	pedidos.id,
 	pedidos.status,
 	pedidos.cliente_id,
